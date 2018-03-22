@@ -11,7 +11,8 @@ def index():
 def user(name):
     # return '<h1>"欢迎光临," %s <h1>' % name
     s='look and see'
-    return '<h1>欢迎光临,' + s + '<h1>'
+    b=type(name)
+    return '<h1>欢迎光临,' + b + '<h1>'
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
