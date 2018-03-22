@@ -11,7 +11,7 @@ def index():
 def user(name):
     s='come and see!'
     # return '<h1>"欢迎光临," %s <h1>' % name
-    return '<h1>欢迎光临' + '<h1>'
+    return '<h1>欢迎光临' + s + '<h1>'
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
