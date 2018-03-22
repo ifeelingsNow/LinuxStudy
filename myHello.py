@@ -10,7 +10,8 @@ def index():
 @app.route('/user/<name>')
 def user(name):
     # return '<h1>"欢迎光临," %s <h1>' % name
-    return '<h1>欢迎光临,' + name + '<h1>'
+    s='look and see'
+    return '<h1>欢迎光临,' + s + '<h1>'
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
