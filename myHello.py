@@ -6,6 +6,9 @@ app = Flask(__name__)
 def index():
     return '<h1>看看中文字可不可以显示!</h1>'
 
+@app.route('/user/<name>')
+def user(name):
+    return '<h1>%s,欢迎登陆！' % name
 if __name__ == '__main__':
     app.run('0.0.0.0')
 
