@@ -12,7 +12,7 @@ def user(name):
     # return '<h1>"欢迎光临," %s <h1>' % name
     s='look and see'
     b=type(name)
-    return '<h1>欢迎光临,' + str(b) + '<h1>'
+    return '<h1>欢迎光临,' + str(name) + '<h1>'
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
