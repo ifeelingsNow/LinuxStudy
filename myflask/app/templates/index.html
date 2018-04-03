@@ -5,11 +5,11 @@
 
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    <h1>您好 {% if name %}, {{ name }}{% else %}{% endif %}!</h1>
     {% if not known %}
-    <p>Pleased to meet you!</p>
+    <p>请多关照</p>
     {% else %}
-    <p>Happy to see you again!</p>
+    <p>欢迎回来</p>
     {% endif %}
 </div>
 {{ wtf.quick_form(form) }}
