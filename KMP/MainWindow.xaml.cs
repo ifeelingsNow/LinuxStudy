@@ -78,10 +78,29 @@ namespace KMP
 
         private void Button_Click_KMP(object sender, RoutedEventArgs e)
         {
-            string findstr = "ABCDABD";
+            string findstr = c_findStr.Text;
+            string oristr = c_oriStr.Text;
             //c_findStr.Text;
             //生成KMP构造匹配表
-            int[] a = Func.KMPMatchList(findstr);
+            int[] MList = Func.KMPMatchList(findstr);
+            int oriTag = 0, findTag = 0, lastOriTag = 0;
+            int findLen = findstr.Length;
+            int oriLen = oristr.Length;
+            bool isFind = false;
+            for (oriTag = 0; oriTag < oriLen; oriTag++)
+            {
+                //当前指针
+                lastOriTag = oriTag;
+                for (findTag = 0; findTag < findLen; findTag++)
+                {
+
+                }
+                //表示已经找到了
+                if (isFind == true)
+                {
+                    //return true;
+                }
+            }
             Trace.WriteLine("1");
         }
     }
