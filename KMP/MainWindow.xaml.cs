@@ -29,46 +29,11 @@ namespace KMP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //string oristr = c_oriStr.Text;
-            //string findstr = c_findStr.Text;
-            //char getc = oristr[3];
-            //int oriTag = 0, findTag = 0, lastOriTag = 0, resTag = -1;
-            //int findLen = findstr.Length;
-            //int oriLen = oristr.Length;
-            //bool isFind = false;
-            //for (oriTag = 0; oriTag < oriLen; oriTag++)
-            //{
-            //    lastOriTag = oriTag;
-            //    for (findTag = 0; findTag < findLen; findTag++)
-            //    {
-            //        if (oristr[oriTag] == findstr[findTag])
-            //        {
-            //            oriTag++;
-            //            if (findTag == findLen - 1)
-            //            {
-            //               resTag = lastOriTag;
-            //               isFind = true;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            oriTag = lastOriTag;
-            //            break;
-            //        }
-            //    }
-            //    //表示已经找到了
-            //    if (isFind == true)
-            //    {
-            //        MessageBox.Show(oristr.Substring(resTag, findLen));
-            //        break; 
-            //    }
-            //}
-            //测试用时
             int pos = -1;
             DateTime dt1 = DateTime.Now;
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100000; i++)
             {
-                Func.simpleFind(c_oriStr.Text, c_findStr.Text, ref pos);                
+                bool test = Func.simpleFind(c_oriStr.Text, c_findStr.Text, ref pos);
             }
             DateTime dt2 = DateTime.Now;
             TimeSpan ts = (dt2 - dt1);
@@ -78,29 +43,17 @@ namespace KMP
 
         private void Button_Click_KMP(object sender, RoutedEventArgs e)
         {
-            string findstr = c_findStr.Text;
-            string oristr = c_oriStr.Text;
-            //c_findStr.Text;
-            //生成KMP构造匹配表
-            int[] MList = Func.KMPMatchList(findstr);
-            int oriTag = 0, findTag = 0, lastOriTag = 0;
-            int findLen = findstr.Length;
-            int oriLen = oristr.Length;
-            bool isFind = false;
-            for (oriTag = 0; oriTag < oriLen; oriTag++)
+            //测试用时
+            int pos = -1;
+            int[] Mlist = Func.KMPMatchList(c_findStr.Text);
+            DateTime dt1 = DateTime.Now;
+            for (int i = 0; i < 100000; i++)
             {
-                //当前指针
-                lastOriTag = oriTag;
-                for (findTag = 0; findTag < findLen; findTag++)
-                {
-
-                }
-                //表示已经找到了
-                if (isFind == true)
-                {
-                    //return true;
-                }
+                bool test = Func.KMPFind(c_oriStr.Text, c_findStr.Text, Mlist, ref pos);
             }
+            DateTime dt2 = DateTime.Now;
+            TimeSpan ts = (dt2 - dt1);
+            MessageBox.Show(ts.Ticks.ToString());
             Trace.WriteLine("1");
         }
     }
