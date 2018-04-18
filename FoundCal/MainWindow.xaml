@@ -1,0 +1,30 @@
+﻿<Window x:Class="KMP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="原始字符串:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBox x:Name="c_oriStr" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="150" Height="25" Text="bbc abcdab abcdabcdabde" />
+        <TextBlock Text="要查找字符串:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"></TextBlock>
+        <TextBox x:Name="c_findStr" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="150" Height="25" Grid.Row="1" Text="abcdabd" />
+        <Button Grid.Column="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Content="简单算法" Click="Button_Click"/>
+        <Button Grid.Column="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Content="KMD算法" Click="Button_Click_KMP" Grid.Row="1"/>
+    </Grid>
+</Window>
