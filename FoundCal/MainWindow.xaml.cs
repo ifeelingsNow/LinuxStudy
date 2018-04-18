@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using StudyFunc;
+using DailyFunc;
 
 namespace KMP
 {
@@ -29,32 +30,16 @@ namespace KMP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int pos = -1;
-            DateTime dt1 = DateTime.Now;
-            for (int i = 0; i < 100000; i++)
-            {
-                bool test = Func.simpleFind(c_oriStr.Text, c_findStr.Text, ref pos);
-            }
-            DateTime dt2 = DateTime.Now;
-            TimeSpan ts = (dt2 - dt1);
-            MessageBox.Show(ts.Ticks.ToString());
+            DateTime dt1 = DateTime.Parse("2015/2/16");
+            DateTime dt2 = DateTime.Parse("2015/3/23");
+            DateTime dt3 = DateTime.Parse("2015/4/2");
+            int days = (dt2 - dt1).Days;
+            string daysofweek = dt3.DayOfWeek.ToString();
             Trace.WriteLine("1");
         }
 
         private void Button_Click_KMP(object sender, RoutedEventArgs e)
         {
-            //测试用时
-            int pos = -1;
-            int[] Mlist = Func.KMPMatchList(c_findStr.Text);
-            DateTime dt1 = DateTime.Now;
-            for (int i = 0; i < 100000; i++)
-            {
-                bool test = Func.KMPFind(c_oriStr.Text, c_findStr.Text, Mlist, ref pos);
-            }
-            DateTime dt2 = DateTime.Now;
-            TimeSpan ts = (dt2 - dt1);
-            MessageBox.Show(ts.Ticks.ToString());
-            Trace.WriteLine("1");
         }
     }
 }
