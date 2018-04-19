@@ -35,11 +35,38 @@ namespace KMP
             DateTime dt3 = DateTime.Parse("2015/4/2");
             int days = (dt2 - dt1).Days;
             string daysofweek = dt3.DayOfWeek.ToString();
+            //计算支付宝复利，每个月存入2000，5年以后的总收入
+            double dayRate = Convert.ToDouble(c_rate.Text) / 100 / 365;
+            double sFound = Convert.ToDouble(c_everyMonth.Text);
+            int monthNum = Convert.ToInt16(c_month.Text);
+            DateTime dts = DateTime.Parse("2018/5/1");
+            DateTime dse = dts.AddYears(1);
+            //DateTime dse = dts.AddYears(5);
+            double sum = 0;
+            for (; dts < dse; dts = dts.AddDays(1))
+            {
+                sum += (sum * dayRate);
+                if (dts.Day == 10)
+                {
+                    sum += sFound;
+                }
+            }
             Trace.WriteLine("1");
         }
 
         private void Button_Click_KMP(object sender, RoutedEventArgs e)
         {
+            DateTime dts = DateTime.Parse("2018/5/1");
+            DateTime dse = dts.AddYears(1);
+            //DateTime dse = dts.AddYears(5);
+            double dayRate = Convert.ToDouble(c_rate.Text) / 100 / 365;
+            double sum = 47991;
+            for (; dts < dse; dts = dts.AddDays(1))
+            {
+                sum += (sum * dayRate);
+            }
+            double yearRate = (50000.0 - 47991.0) / 47991.0 * 100;
+            Trace.WriteLine("1");
         }
     }
 }
