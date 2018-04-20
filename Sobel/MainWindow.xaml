@@ -26,5 +26,6 @@
         <TextBox x:Name="c_findStr" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Width="150" Height="25" Grid.Row="1" Text="abcdabd" />
         <Button Grid.Column="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Content="简单算法" Click="Button_Click"/>
         <Button Grid.Column="2" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Content="KMD算法" Click="Button_Click_KMP" Grid.Row="1"/>
+        <Button Content="利息" Width="100" Height="30" Grid.Column="2" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" Click="Button_Click_1"/>
     </Grid>
 </Window>

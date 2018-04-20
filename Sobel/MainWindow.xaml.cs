@@ -56,5 +56,25 @@ namespace KMP
             MessageBox.Show(ts.Ticks.ToString());
             Trace.WriteLine("1");
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            double a = 157000 / 36;
+            double mCoef = 0.05 / 12;
+            double sum = 0;
+            for (int i = 0; i < 36; i++)
+            {
+                double curM = a + sum * mCoef;
+                sum += curM;
+            }
+            double leftS = 157000;
+            double allS = leftS;
+            for (int i = 0; i < 36; i++)
+            {
+                allS += (allS * mCoef);
+            }
+            MessageBox.Show(allS.ToString());
+            Trace.WriteLine("1");
+        }
     }
 }
