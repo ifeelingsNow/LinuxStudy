@@ -12,6 +12,7 @@ db=SQLAlchemy(app)
 manager = Manager(app)
 
 class Follow:
+    __tablename__ = 'follows'
     follower_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     followed_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
@@ -41,7 +42,7 @@ class User:
                 db.session.rollback()
 
 def make_shell_context():
-    return dict(app=app, db=db, User=User)
+    return dict(app=app, db=db, Follow=Follow, User=User)
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
