@@ -1,6 +1,6 @@
+from flask_script import Manager, Shell
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_script import Manager, Shell
 from datetime import datetime
 import os
 
@@ -11,10 +11,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 manager = Manager(app)
 
-
-referTable=db.Table('refertable',
-                    db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-                    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'), primary_key=True))
 class Follow:
     follower_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     followed_id=db.Column(db.Integer, db.ForeignKey('users.id'))
