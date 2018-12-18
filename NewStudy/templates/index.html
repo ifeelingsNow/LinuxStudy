@@ -1,5 +1,9 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 {% block title %}主页哦{% endblock %}
 {% block page_content %}
+    {{ wtf.quick_form(form) }}
     <ul class="posts">
         {% for post in posts %}
         <li>

@@ -3,6 +3,10 @@ from flask import Flask, render_template, session, redirect, url_for, flash
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_wtf import FlaskForm
+from wtforms import SubmitField,StringField
+from flask_bootstrap import Bootstrap
+from wtforms.validators import DataRequired, Length, Email, Regexp, ValidationError
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -10,8 +14,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] =\
     'sqlite:///' + os.path.join(basedir, 'test.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
 db = SQLAlchemy(app)
+bootstrap=Bootstrap(app)
 
 class Follow(db.Model):
     __tablename__ = 'follows'
@@ -61,7 +67,27 @@ class User(UserMixin, db.Model):
     def is_followed_by(self, user):
         return self.follower.filter_by(follower_id=user.id).first() is not None
 
+class testForm(FlaskForm):
+    name=StringField('测试功能', validators=[Length(0,64)])
+    button = SubmitField('提交')
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    from random import seed
+    import forgery_py
+    form=testForm()
     posts = User.query.all()
-    return render_template('index.html', posts=posts)
+    if form.validate_on_submit():
+        seed()
+        for post in posts:
+            post.member_since=forgery_py.date.date(True)
+            db.session.add(post)
+        db.session.commit()
+    return render_template('index.html', form=form, posts=posts)
+    # return '这是主页，我来试试看'
+
+@app.route('/testurl', methods=['GET', 'POST'])
+def test1():
+    urlpos=url_for('index')
+    # return render_template('index.html', posts=posts)
+    return urlpos
